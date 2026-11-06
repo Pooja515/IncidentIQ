@@ -49,6 +49,15 @@ Keep the password in your shell environment or a local `.env` file. `.env` is ig
 mvn test
 ```
 
+The PostgreSQL integration test is opt-in and uses only the dedicated `incidentiq_test` database:
+
+```sh
+set -a
+source .env
+set +a
+RUN_POSTGRES_INTEGRATION=true mvn test
+```
+
 - `GET http://localhost:8080/api/health` — basic application response.
 - `GET http://localhost:8080/actuator/health` — Actuator health, including the PostgreSQL connection.
 - `GET http://localhost:8080/actuator/info` — application information.
