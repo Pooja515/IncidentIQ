@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: incident-iq
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/incidentiq}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        boot:
+          allow_jdbc_metadata_access: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+info:
+  app:
+    name: IncidentIQ
+    description: Incident management backend
